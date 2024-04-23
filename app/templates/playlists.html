@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="header__inner">
+          <div class="header__logo">WS</div>
+
+          <nav class="nav headerButton">
+            <a class="nav__link" href="/main">Главная</a>
+            <a class="nav__link" href="/playlists">Плейлисты</a>
+            <a class="nav__link" href="/begin">Войти</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  <div class="block">
+        <h3 class="min__title__right">Ваши плейлисты</h3>
+          <a href="#win" class="btnn">Добавить плейлист</a>
+             <a href="#x" class="overlay" id="win"></a>
+   <div class="popup">
+       <form method="post" class="form-control" enctype="multipart/form-data">
+                    <input type="text" id="playlist_name" name="playlist_name" class="search_1" placeholder="Название плейлиста"><br>
+                    <input class="btn__search" type="file" name="playlist_image" accept="image/*">
+                    <button class="addBtn" type="submit">Сохранить</button>
+       </form>
+
+    <a class="close" title="Закрыть" href="#close"></a>
+    </div>
+      <div class="fforma" id="row">
+          {% for  playlist, image in datas %}
+            <div class="page-block">
+              <img src="data:image/png;base64,{{ image }}" alt="Image">
+                {{playlist.title}}
+            </div>
+          {%endfor%}
+      </div>
+
+  </div>
+  </body>
+</html>
